@@ -1,5 +1,22 @@
 class PostsController < ApplicationController
   def index
+  end
 
+  def new
+    @post = Post.new()
+  end
+
+  def create
+    @post = Post.create(post_params)
+    print(posts_path)
+    redirect_to posts_path
+  end
+
+  private
+  # Use strong_parameters for attribute whitelisting
+  # Be sure to update your create() and update() controller methods.
+  def post_params
+    params.require(:post).permit(:image,
+                                 :caption)
   end
 end
