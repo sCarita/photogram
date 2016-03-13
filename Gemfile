@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
-gem 'haml'
 gem 'paperclip', '~> 4.2' #at the writing of this post
 gem 'simple_form'
 

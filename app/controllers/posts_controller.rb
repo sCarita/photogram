@@ -8,7 +8,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    print(posts_path)
     redirect_to posts_path
   end
 
