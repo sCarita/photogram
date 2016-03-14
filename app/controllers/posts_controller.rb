@@ -16,6 +16,16 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(post_params)
+    redirect_to post_path(@post)
+  end
+
   private
   # Use strong_parameters for attribute whitelisting
   # Be sure to update your create() and update() controller methods.

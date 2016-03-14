@@ -6,5 +6,6 @@
     <div class="image center-block"><%= link_to (image_tag @post.image.url(:medium), class:'img-responsive'), post_path(@post) %></div>
     <p><%= @post.caption %></p>
     <div class="text-center"><%= link_to "Cancel", posts_path%></div>
+    <div class="text-center edit-links"><%= link_to "Edit Post", edit_post_path(@post) %></div>
   </div>
 </div>
