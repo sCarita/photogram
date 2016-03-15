@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_post
-  before_action :set_coment, only: [:destroy]
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -16,18 +15,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = @post.comments.find(params[:id])
+
     @comment.destroy
-    flash[:sucess] = "Comment has been eliminated."
+    flash[:success] = "Comment has been eliminated."
     redirect_to root_path
   end
-
-  #def destroy
-  #  @comment = @post.comments.find(params[:id])
-  #
-  #  @comment.destroy
-  #  flash[:success] = "Comment deleted :("
-  #  redirect_to root_path
-  #end
 
   private
 
@@ -39,7 +32,4 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
   end
 
-  def set_comment
-    @comment = @post.comments.find(params[:id])
-  end
 end
