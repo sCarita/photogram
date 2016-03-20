@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   before_action :set_post
 
+
+  def index
+    @comments = @post.comments.order("created_at ASC")
+
+    respond_to do |format|
+      format.html { render layout: !request.xhr? }
+    end
+  end
+
   def create
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
@@ -11,7 +20,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = "Somthing went wrong with your comment, try again later."
+      flash[:alert] = "Something went wrong with your comment, try again later."
       redirect_to root_path
     end
   end
