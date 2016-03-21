@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   get ':user_name/edit', to: 'profiles#edit', as: :edit_profile
   patch ':user_name/edit', to: 'profiles#update', as: :update_profile
 
+
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'posts#index'
   resources :posts do
     resources :comments
+    member do
+      get 'like'
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
